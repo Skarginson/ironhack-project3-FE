@@ -8,10 +8,7 @@ function SignupPage() {
     email: "",
     password: "",
     name: "",
-    description: "",
     identification: "",
-    donationLink: "",
-    image: "",
   });
   const [accountType, setAccountType] = useState("user");
   const [error, setError] = useState("");
@@ -39,7 +36,7 @@ function SignupPage() {
 
     try {
       const response = await axios.post(url, formData);
-      navigate("/Homepage");
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }
@@ -82,26 +79,8 @@ function SignupPage() {
           <>
             <input
               type="text"
-              name="description"
-              placeholder="Description"
-              onChange={handleChange}
-            />
-            <input
-              type="text"
               name="identification"
               placeholder="RNA Identification"
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="donationLink"
-              placeholder="Donation Link"
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="image"
-              placeholder="Image URL"
               onChange={handleChange}
             />
           </>

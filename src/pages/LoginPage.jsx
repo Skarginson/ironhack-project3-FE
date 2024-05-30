@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
-import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -10,7 +10,7 @@ function LoginPage() {
     accountType: "user",
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const { updateToken } = useContext(AuthContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,8 +26,8 @@ function LoginPage() {
         `${API_BASE_URL}/login?accountType=${formData.accountType}`,
         formData
       );
-      localStorage.setItem("authToken", response.data.authToken);
-      navigate("/Homepage");
+      updateToken(response.data.authToken);
+      // localStorage.setItem("authToken", response.data.authToken);
     } catch (err) {
       setError(err.response.data.message);
     }

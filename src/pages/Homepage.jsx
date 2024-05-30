@@ -7,6 +7,9 @@ function Homepage() {
     <>
       <Header />
       <Sidebar />
+      <>
+        <h1>This is a homepage, I swear</h1>
+      </>
       <Footer />
     </>
   );

@@ -39,9 +39,9 @@ class ApiHandler {
   //     return this.api.post("/users/signup", data);
   //   }
 
-  //   getUser() {
-  //     return this.api.get("/users/me");
-  //   }
+  getUser() {
+    return this.api.get("/users/me");
+  }
 }
 
 const apiHandler = new ApiHandler();

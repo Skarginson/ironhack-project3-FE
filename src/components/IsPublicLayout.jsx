@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 function IsPublicLayout() {
   const { user } = useContext(AuthContext);
-
+  console.log(user);
   if (user) {
     return <Navigate to="/" />;
   }
