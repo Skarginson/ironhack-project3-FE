@@ -27,7 +27,6 @@ function LoginPage() {
         formData
       );
       updateToken(response.data.authToken);
-      // localStorage.setItem("authToken", response.data.authToken);
     } catch (err) {
       setError(err.response.data.message);
     }

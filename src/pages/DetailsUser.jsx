@@ -7,6 +7,8 @@ function DetailsUser() {
     <>
       <Header />
       <Sidebar />
+
+      <h1></h1>
       <Footer />
     </>
   );
