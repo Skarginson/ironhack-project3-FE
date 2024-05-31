@@ -9,6 +9,8 @@ import IsPublicLayout from "./components/IsPublicLayout";
 import IsPrivateLayout from "./components/IsPrivateLayout";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import Page404 from "./pages/Page404";
+import OrganizationEdit from "./components/OrganizationEdit";
 
 function App() {
   return (
@@ -20,11 +22,12 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
         </Route>
 
-        <Route Component={IsPrivateLayout}>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/details/:orgId" element={<DetailsOrg />} />
-          <Route path="/details/:userId" element={<DetailsUser />} />
-        </Route>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/organizations/:orgId" element={<DetailsOrg />} />
+        <Route path="/users/:userId" element={<DetailsUser />} />
+        <Route path="/organizations/:orgId/edit" Component={OrganizationEdit} />
+        <Route path="*" element={<Page404 />} />
+        <Route Component={IsPrivateLayout}></Route>
       </Routes>
     </>
   );
