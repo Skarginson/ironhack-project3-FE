@@ -11,6 +11,7 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import Page404 from "./pages/Page404";
 import OrganizationEdit from "./components/OrganizationEdit";
+import OrganizationHomepage from "./pages/OrganizationHomepage";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
 
         <Route path="/" element={<Homepage />} />
         <Route path="/organizations/:orgId" element={<DetailsOrg />} />
+        <Route
+          path="/organizations/:orgId/home"
+          element={<OrganizationHomepage />}
+        />
+
         <Route path="/users/:userId" element={<DetailsUser />} />
         <Route path="/organizations/:orgId/edit" Component={OrganizationEdit} />
         <Route path="*" element={<Page404 />} />

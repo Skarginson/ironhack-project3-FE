@@ -13,7 +13,6 @@ function Homepage() {
       <>
         <h1>This is a homepage, I swear</h1>
       </>
-      <MissionsList />
       <OrganizationsList />
       <PostsList />
       <Footer />
