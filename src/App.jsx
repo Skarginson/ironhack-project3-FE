@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import About from "./pages/About";
+import Homepage from "./pages/Homepage";
+import DetailsOrg from "./pages/DetailsOrg";
+import DetailsUser from "./pages/DetailsUser";
+import IsPublicLayout from "./components/IsPublicLayout";
+import IsPrivateLayout from "./components/IsPrivateLayout";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route Component={IsPublicLayout}>
+          <Route path="/about" element={<About />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
+
+        <Route Component={IsPrivateLayout}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/details/:orgId" element={<DetailsOrg />} />
+          <Route path="/details/:userId" element={<DetailsUser />} />
+        </Route>
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

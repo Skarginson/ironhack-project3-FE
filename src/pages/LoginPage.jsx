@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../consts";
+import { AuthContext } from "../contexts/AuthContext";
 
-const LoginComponent = () => {
+function LoginPage() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     accountType: "user",
   });
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const { updateToken } = useContext(AuthContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,15 +20,13 @@ const LoginComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setSuccess("");
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/login?accountType=${formData.accountType}`,
+        `${API_BASE_URL}/login?accountType=${formData.accountType}`,
         formData
       );
-      setSuccess("Login successful!");
-      localStorage.setItem("authToken", response.data.authToken);
+      updateToken(response.data.authToken);
     } catch (err) {
       setError(err.response.data.message);
     }
@@ -57,9 +57,8 @@ const LoginComponent = () => {
         <button type="submit">Login</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
     </div>
   );
-};
+}
 
-export default LoginComponent;
+export default LoginPage;
