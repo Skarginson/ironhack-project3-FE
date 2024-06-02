@@ -1,34 +1,29 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { API_BASE_URL } from "../consts";
 
-const usePosts = (orgId) => {
-  const [posts, setPosts] = useState([]);
+function usePosts(orgId, page = 1, postsPerPage = 5) {
+  const [posts, setPosts] = useState({ data: [], total: 0 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [updatedAt, setUpdatedAt] = useState(Date.now());
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setLoading(true);
       try {
-        const response = await axios.get(
-          `${API_BASE_URL}/organizations/${orgId}/posts`
+        const response = await fetch(
+          `/api/posts?orgId=${orgId}&page=${page}&limit=${postsPerPage}`
         );
-        setPosts(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+        const data = await response.json();
+        setPosts({ data: data.posts, total: data.total });
+      } catch (error) {
+        setError(error.message);
       }
+      setLoading(false);
     };
+
     fetchPosts();
-  }, [orgId, updatedAt]);
+  }, [orgId, page, postsPerPage]);
 
-  function refetchPosts() {
-    setUpdatedAt(Date.now());
-  }
-
-  return { posts, loading, error, refetchPosts };
-};
+  return { posts, loading, error };
+}
 
 export default usePosts;

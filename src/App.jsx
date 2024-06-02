@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import About from "./pages/About";
@@ -15,6 +14,7 @@ import OrganizationHomepage from "./pages/OrganizationHomepage";
 import MissionsSection from "./components/MissionsSection";
 import PostsSection from "./components/PostsSection";
 import { OrganizationContextProvider } from "./contexts/OrganizationContext";
+import UserHomepage from "./pages/UserHomepage";
 
 function App() {
   return (
@@ -39,6 +39,7 @@ function App() {
           <Route path="missions" element={<MissionsSection />} />
           <Route path="posts" element={<PostsSection />} />
         </Route>
+        <Route path="/users/home" element={<UserHomepage />} />
         <Route path="/users/:userId" element={<DetailsUser />} />
         <Route path="/organizations/:orgId/edit" Component={OrganizationEdit} />
         <Route path="*" element={<Page404 />} />
