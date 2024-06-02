@@ -14,6 +14,7 @@ import OrganizationEdit from "./components/OrganizationEdit";
 import OrganizationHomepage from "./pages/OrganizationHomepage";
 import MissionsSection from "./components/MissionsSection";
 import PostsSection from "./components/PostsSection";
+import { OrganizationContextProvider } from "./contexts/OrganizationContext";
 
 function App() {
   return (
@@ -29,7 +30,11 @@ function App() {
         <Route path="/organizations/:orgId" element={<DetailsOrg />} />
         <Route
           path="/organizations/:orgId/home"
-          element={<OrganizationHomepage />}
+          element={
+            <OrganizationContextProvider>
+              <OrganizationHomepage />{" "}
+            </OrganizationContextProvider>
+          }
         >
           <Route path="missions" element={<MissionsSection />} />
           <Route path="posts" element={<PostsSection />} />

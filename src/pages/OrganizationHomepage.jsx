@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams, useNavigate, Outlet, NavLink } from "react-router-dom";
 import OrganizationDetails from "../components/OrganizationsDetails";
 import useOrganization from "../hooks/useOrganization";
