@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
-import { useNavigate } from "react-router-dom";
 
-const NewPostForm = ({ orgId, missionId }) => {
+const NewPostForm = ({ orgId, missionId, onPostCreated }) => {
   const [postDetails, setPostDetails] = useState({
     title: "",
     content: "",
@@ -13,7 +12,6 @@ const NewPostForm = ({ orgId, missionId }) => {
   });
 
   const { title, content, image } = postDetails;
-  const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -39,6 +37,7 @@ const NewPostForm = ({ orgId, missionId }) => {
         organization: orgId || "",
         mission: missionId || "",
       });
+      onPostCreated();
     } catch (error) {
       console.error("Erreur lors de la création du post:", error);
     }

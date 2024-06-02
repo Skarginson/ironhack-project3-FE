@@ -2,13 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
 
-const NewMissionForm = ({ orgId }) => {
+const NewMissionForm = ({ orgId, onMissionCreated }) => {
   const [missionDetails, setMissionDetails] = useState({
     name: "",
     description: "",
     startDate: "",
     endDate: "",
-    organization: "",
+    organization: orgId,
   });
 
   const { name, description, startDate, endDate } = missionDetails;
@@ -34,7 +34,9 @@ const NewMissionForm = ({ orgId }) => {
         description: "",
         startDate: "",
         endDate: "",
+        organization: orgId,
       });
+      onMissionCreated();
     } catch (error) {
       console.error("Error creating mission:", error);
     }

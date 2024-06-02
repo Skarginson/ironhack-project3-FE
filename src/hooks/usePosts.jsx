@@ -6,6 +6,7 @@ const usePosts = (orgId) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [updatedAt, setUpdatedAt] = useState(Date.now());
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -21,9 +22,13 @@ const usePosts = (orgId) => {
       }
     };
     fetchPosts();
-  }, [orgId]);
+  }, [orgId, updatedAt]);
 
-  return { posts, loading, error };
+  function refetchPosts() {
+    setUpdatedAt(Date.now());
+  }
+
+  return { posts, loading, error, refetchPosts };
 };
 
 export default usePosts;

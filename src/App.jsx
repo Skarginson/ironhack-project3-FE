@@ -12,6 +12,8 @@ import LoginPage from "./pages/LoginPage";
 import Page404 from "./pages/Page404";
 import OrganizationEdit from "./components/OrganizationEdit";
 import OrganizationHomepage from "./pages/OrganizationHomepage";
+import MissionsSection from "./components/MissionsSection";
+import PostsSection from "./components/PostsSection";
 
 function App() {
   return (
@@ -28,8 +30,10 @@ function App() {
         <Route
           path="/organizations/:orgId/home"
           element={<OrganizationHomepage />}
-        />
-
+        >
+          <Route path="missions" element={<MissionsSection />} />
+          <Route path="posts" element={<PostsSection />} />
+        </Route>
         <Route path="/users/:userId" element={<DetailsUser />} />
         <Route path="/organizations/:orgId/edit" Component={OrganizationEdit} />
         <Route path="*" element={<Page404 />} />
