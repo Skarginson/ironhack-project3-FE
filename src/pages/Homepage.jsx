@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
-import MissionsList from "../components/MissionsList";
 import OrganizationsList from "../components/OrganizationsList";
 import PostsList from "../components/PostsList";
 
@@ -11,7 +10,7 @@ function Homepage() {
       <Header />
       <Sidebar />
       <>
-        <h1>This is a homepage, I swear</h1>
+        <h1>This'll be the first homepage without login </h1>
       </>
       <OrganizationsList />
       <PostsList />

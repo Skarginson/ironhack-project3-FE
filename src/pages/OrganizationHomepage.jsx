@@ -4,18 +4,20 @@ import useOrganization from "../hooks/useOrganization";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import { useContext } from "react";
+import { OrganizationContext } from "../contexts/OrganizationContext";
 
 const OrganizationHomepage = () => {
-  const { orgId } = useParams();
-  const { organization, loading, error } = useOrganization(orgId);
+  const { organization, loading, error } = useContext(OrganizationContext);
   const navigate = useNavigate();
 
   const handleEditClick = () => {
-    navigate(`/organizations/${orgId}/edit`);
+    navigate(`/organizations/${organization._id}/edit`);
   };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+  console.log(organization);
 
   return (
     <div>
@@ -29,7 +31,7 @@ const OrganizationHomepage = () => {
         <NavLink to="missions">Missions</NavLink>
         <NavLink to="posts">Posts</NavLink>
       </nav>
-      <Outlet context={{ orgId }} />
+      <Outlet />
       <Footer />
     </div>
   );

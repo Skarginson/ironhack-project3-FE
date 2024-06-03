@@ -20,6 +20,7 @@ const useOrganization = (orgId) => {
         setLoading(false);
       }
     };
+
     fetchOrganization();
   }, [orgId]);
 

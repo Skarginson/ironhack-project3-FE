@@ -8,7 +8,12 @@ const useMissions = (orgId) => {
   const [error, setError] = useState(null);
   const [updatedAt, setUpdatedAt] = useState(Date.now());
 
+  console.log("orgId", orgId);
   useEffect(() => {
+    if (!orgId) {
+      return;
+    }
+
     const fetchMissions = async () => {
       try {
         const response = await axios.get(

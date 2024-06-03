@@ -32,7 +32,7 @@ function App() {
           path="/organizations/:orgId/home"
           element={
             <OrganizationContextProvider>
-              <OrganizationHomepage />{" "}
+              <OrganizationHomepage />
             </OrganizationContextProvider>
           }
         >
