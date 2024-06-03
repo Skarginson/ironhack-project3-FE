@@ -1,12 +1,12 @@
 import logoPlaceHolder from "../assets/logo-placeholder.jpg";
 import { useNavigate } from "react-router-dom";
 
-const OrganizationDetails = (organization) => {
+function OrganizationDetails(organization) {
   const navigate = useNavigate();
 
-  const handleEditClick = () => {
+  function handleEditClick() {
     navigate(`/organizations/${organization._id}/edit`);
-  };
+  }
 
   return (
     <div>
@@ -31,6 +31,6 @@ const OrganizationDetails = (organization) => {
       <button onClick={handleEditClick}>Edit</button>
     </div>
   );
-};
+}
 
 export default OrganizationDetails;

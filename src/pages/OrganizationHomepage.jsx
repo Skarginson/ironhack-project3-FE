@@ -1,6 +1,5 @@
-import { useParams, useNavigate, Outlet, NavLink } from "react-router-dom";
+import { useNavigate, Outlet, NavLink } from "react-router-dom";
 import OrganizationDetails from "../components/OrganizationsDetails";
-import useOrganization from "../hooks/useOrganization";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";

@@ -3,7 +3,7 @@ import "./App.css";
 import About from "./pages/About";
 import Homepage from "./pages/Homepage";
 import DetailsOrg from "./pages/DetailsOrg";
-import DetailsUser from "./pages/DetailsUser";
+import UserDetails from "./components/UserDetails";
 import IsPublicLayout from "./components/IsPublicLayout";
 import IsPrivateLayout from "./components/IsPrivateLayout";
 import SignupPage from "./pages/SignupPage";
@@ -40,7 +40,7 @@ function App() {
           <Route path="posts" element={<PostsSection />} />
         </Route>
         <Route path="/users/home" element={<UserHomepage />} />
-        <Route path="/users/:userId" element={<DetailsUser />} />
+        <Route path="/users/:userId" element={<UserDetails />} />
         <Route path="/organizations/:orgId/edit" Component={OrganizationEdit} />
         <Route path="*" element={<Page404 />} />
         <Route Component={IsPrivateLayout}></Route>
