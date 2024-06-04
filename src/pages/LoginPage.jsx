@@ -31,10 +31,10 @@ function LoginPage() {
         `${API_BASE_URL}/login?accountType=${formData.accountType}`,
         formData
       );
-      updateToken(response.data.authToken);
+      updateToken(response.data.authToken, response.data.accountType);
 
       const id = response.data._id;
-      if (formData.accountType === "organization") {
+      if (id) {
         navigate(`/organizations/${id}`);
       } else {
         navigate("/users/home");

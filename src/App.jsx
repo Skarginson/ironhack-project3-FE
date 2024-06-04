@@ -13,6 +13,7 @@ import OrganizationHomepage from "./pages/OrganizationHomepage";
 import UserHomepage from "./pages/UserHomepage";
 import MissionDetails from "./components/MissionDetails";
 import MissionEdit from "./components/MissionEdit";
+import DetailsOrg from "./pages/DetailsOrg";
 
 function App() {
   return (
@@ -23,9 +24,8 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
-
         <Route path="/" element={<Homepage />} />
-        {/* <Route path="/organizations/:orgId" element={<DetailsOrg />} /> TO REMOVE */}
+        <Route path="/organizations/:orgId/details" element={<DetailsOrg />} />
         <Route
           path="/organizations/:orgId"
           element={<OrganizationHomepage />}

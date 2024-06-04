@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { API_BASE_URL } from "../consts";
 
 const UserDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user, updateUser } = useContext(AuthContext);
   const [editable, setEditable] = useState(false);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
@@ -14,17 +14,20 @@ const UserDetails = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`${API_BASE_URL}/users/${user._id}`, {
-        name,
-        email,
-        password,
-      });
+      const updatedUser = { ...user, name, email };
+      if (password) {
+        updatedUser.password = password;
+      }
+
+      await axios.put(`${API_BASE_URL}/users/${user._id}`, updatedUser);
+
+      updateUser(updatedUser);
+
       setEditable(false);
     } catch (error) {
       console.error("Error updating user details", error);
     }
   };
-
   return (
     <div>
       <h2>User Details</h2>

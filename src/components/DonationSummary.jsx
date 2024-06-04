@@ -24,7 +24,7 @@ function DonationSummary({ user }) {
   return (
     <div className="donation-summary">
       <h2>Donation Summary</h2>
-      <h3>Monthly Donations by Organization</h3>
+      <h3>Monthly Donations by Organizations</h3>
       <ul>
         {monthlyDonationsByOrg.map(function (org, index) {
           return (
@@ -39,7 +39,7 @@ function DonationSummary({ user }) {
       <p>
         Optimal Taxable Income for Maximum Reduction: {optimalTaxableIncome} €{" "}
         <br />
-        Isn't that your taxable income? Would you like to know how much you
+        This is not your taxable income? Would you like to know how much you
         could donate to optimize your tax reduction? This data will not be
         stored.
       </p>

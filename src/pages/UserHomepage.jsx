@@ -1,8 +1,11 @@
 import UserDetails from "../components/UserDetails";
-import FollowedOrganizations from "../components/FollowedOrganizations";
-import DonatedOrganizations from "../components/DonatedOrganizations";
+import OrganizationsList from "../components/OrganizationsList";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
+import DonationSummary from "../components/DonationSummary";
 
 const Homepage = () => {
   const { user, loading, error } = useContext(AuthContext);
@@ -16,11 +19,16 @@ const Homepage = () => {
 
   console.log(user);
   return (
-    <div>
-      <UserDetails user={user} />
-      <FollowedOrganizations user={user} />
-      <DonatedOrganizations user={user} />
-    </div>
+    <>
+      <Header />
+      <Sidebar />
+      <div>
+        <UserDetails user={user} />
+        <OrganizationsList />
+        <DonationSummary />
+      </div>
+      {/* <Footer /> */}
+    </>
   );
 };
 

@@ -8,11 +8,16 @@ function AuthContextProvider({ children }) {
   const [authToken, setAuthToken] = useState(localStorage.getItem("authToken"));
   const [isLoading, setIsLoading] = useState(false);
 
-  function updateToken(token) {
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
+  function updateToken(token, accountType) {
     if (token) {
       localStorage.setItem("authToken", token);
+      localStorage.setItem("accountType", accountType);
     } else {
-      localStorage.removeItem("authToken");
+      localStorage.clear();
     }
 
     setAuthToken(token);
@@ -48,8 +53,9 @@ function AuthContextProvider({ children }) {
     getUser();
   }, [authToken]);
 
+  console.log(user, "AuthContext");
   return (
-    <AuthContext.Provider value={{ user, updateToken, isLoading }}>
+    <AuthContext.Provider value={{ user, updateToken, isLoading, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

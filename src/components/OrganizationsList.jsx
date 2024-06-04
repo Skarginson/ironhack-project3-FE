@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import { Link } from "react-router-dom";
 
 const OrganizationsList = () => {
   const [organizations, setOrganizations] = useState([]);
@@ -30,7 +31,9 @@ const OrganizationsList = () => {
       <h1>Organizations</h1>
       <ul>
         {organizations.map((org) => (
-          <li key={org.name}>{org.name}</li>
+          <Link to={`/organizations/${org._id}/details`} key={org._id}>
+            <li key={org.name}>{org.name}</li>
+          </Link>
         ))}
       </ul>
     </div>

@@ -10,9 +10,10 @@ class ApiHandler {
     this.api.interceptors.request.use(
       (config) => {
         const authToken = localStorage.getItem("authToken");
+        const accountType = localStorage.getItem("accountType");
 
         if (authToken) {
-          config.headers.Authorization = `Bearer ${authToken}`;
+          config.headers.Authorization = `Bearer ${authToken} ${accountType}`;
         }
 
         return config;

@@ -1,14 +1,13 @@
 import logoPlaceHolder from "../assets/logo-placeholder.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "../styles/OrganizationsDetails.module.css";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
 
 function OrganizationDetails({ organization }) {
-  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-  function handleEditClick() {
-    navigate(`/organizations/${organization._id}/edit`);
-  }
-
+  console.log(user, "OrganizationDetails", organization);
   return (
     <div className={styles.container}>
       <h1>{organization.name}</h1>
@@ -30,7 +29,9 @@ function OrganizationDetails({ organization }) {
         alt={`${organization.name} logo`}
       />
       <div>
-        <button onClick={handleEditClick}>Edit</button>
+        {user?.identification && user._id === organization._id && (
+          <Link to={`/organizations/${organization._id}/edit`}>Edit</Link>
+        )}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ const DonatedOrganizations = ({ user }) => {
     (org) => org.monthlyDonation.amount > 1
   );
 
+  console.log(user, "userDonatedOrg");
   return (
     <div>
       <h2>Donated Organizations</h2>
