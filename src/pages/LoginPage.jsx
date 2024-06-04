@@ -5,6 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ function LoginPage() {
   });
   const [error, setError] = useState("");
   const { updateToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,11 +32,17 @@ function LoginPage() {
         formData
       );
       updateToken(response.data.authToken);
+
+      const id = response.data._id;
+      if (formData.accountType === "organization") {
+        navigate(`/organizations/${id}`);
+      } else {
+        navigate("/users/home");
+      }
     } catch (err) {
       setError(err.response.data.message);
     }
   };
-
   return (
     <>
       <Header />

@@ -12,6 +12,7 @@ import OrganizationEdit from "./components/OrganizationEdit";
 import OrganizationHomepage from "./pages/OrganizationHomepage";
 import UserHomepage from "./pages/UserHomepage";
 import MissionDetails from "./components/MissionDetails";
+import MissionEdit from "./components/MissionEdit";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           path="/organizations/:orgId/details/:missionId"
           element={<MissionDetails />}
         />
+        <Route path="/missions/:missionId/edit" Component={MissionEdit} />
         <Route path="/users/home" element={<UserHomepage />} />
         <Route path="/users/:userId" element={<UserDetails />} />
         <Route path="/organizations/:orgId/edit" Component={OrganizationEdit} />

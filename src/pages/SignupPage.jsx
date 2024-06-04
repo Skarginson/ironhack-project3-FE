@@ -40,7 +40,12 @@ function SignupPage() {
 
     try {
       const response = await axios.post(url, formData);
-      navigate("/");
+      const id = response.data._id;
+      if (accountType === "organization") {
+        navigate(`/organizations/${id}`);
+      } else {
+        navigate("/users/home");
+      }
     } catch (error) {
       setError(error.message);
     }
