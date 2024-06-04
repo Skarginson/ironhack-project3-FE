@@ -9,9 +9,12 @@ const MissionList = ({ missions }) => {
       <h2>Current Missions</h2>
       <ul>
         {missions.map((mission) => (
-          <Link to={`details/${mission._id}`} key={mission._id}>
+          <Link
+            to={`/organizations/${mission.organization._id}/details/${mission._id}`}
+            state={{ mission }}
+            key={mission._id}
+          >
             <MissionCard mission={mission} />
-            {/* <li key={mission._id}>{mission.name}</li> */}
           </Link>
         ))}
       </ul>

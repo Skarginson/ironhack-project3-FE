@@ -1,16 +1,21 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import styles from "../styles/MissionDetails.module.css";
-import useMissions from "../hooks/useMissions";
+import axios from "axios";
+import { API_BASE_URL } from "../consts";
 
 function MissionDetails() {
-  const { orgId } = useParams;
-  const navigate = useNavigate();
-  const mission = useMissions(orgId);
-
+  const { state } = useLocation();
+  const { mission } = state;
+  const { orgId } = useParams();
   console.log(mission, "mission details");
-  function handleEditClick() {
+
+  function handleEdit() {
     // navigate(`/organizations/${mission._id}/edit`);
   }
+
+  const handleDelete = async () => {
+    await axios.delete(`${API_BASE_URL}/missions/${mission._id}`);
+  };
 
   return (
     <div className={styles.container}>
@@ -26,7 +31,14 @@ function MissionDetails() {
       </p>
       <p>{/* <strong>Organisation:</strong> {mission.organization.name} */}</p>
       <div>
-        <button onClick={handleEditClick}>Edit</button>
+        <button onClick={handleEdit}>Edit</button>
+        <button
+          onClick={() => {
+            handleDelete();
+          }}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
