@@ -18,7 +18,12 @@ function AuthContextProvider({ children }) {
     setAuthToken(token);
   }
 
+  // const logout = () => {
+  //   localStorage.removeItem("authToken");
+  // };
+
   useEffect(() => {
+    console.log("useEffecting");
     async function getUser() {
       if (!authToken) {
         if (user) {
@@ -31,8 +36,8 @@ function AuthContextProvider({ children }) {
       try {
         setIsLoading(true);
         const response = await apiHandler.getUser();
-        setUser(response.data);
         console.log(response.data, "response data");
+        setUser(response.data);
       } catch (error) {
         updateToken(null);
       } finally {

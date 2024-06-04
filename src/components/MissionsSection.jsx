@@ -1,20 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import MissionsList from "../components/MissionsList";
 import NewMissionForm from "../components/NewMissionForm";
 import useMissions from "../hooks/useMissions";
-import { OrganizationContext } from "../contexts/OrganizationContext";
 
-const MissionsSection = () => {
+const MissionsSection = ({ orgId }) => {
   const [showForm, setShowForm] = useState(false);
-  const {
-    organization,
-    loading: loadingOrganization,
-    error: errorOrganization,
-  } = useContext(OrganizationContext);
 
-  const { missions, loading, error, refetchMissions } = useMissions(
-    organization?._id
-  );
+  const { missions, loading, error, refetchMissions } = useMissions(orgId);
 
   const handleNewMissionClick = () => {
     setShowForm(true);
@@ -34,7 +26,7 @@ const MissionsSection = () => {
       {showForm ? (
         <div className="form-overlay">
           <NewMissionForm
-            orgId={organization._id}
+            orgId={orgId}
             onMissionCreated={handleMissionCreated}
           />
         </div>

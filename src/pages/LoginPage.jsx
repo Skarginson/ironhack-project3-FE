@@ -2,6 +2,9 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../contexts/AuthContext";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -33,31 +36,36 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          required
-        />
-        <select name="accountType" onChange={handleChange}>
-          <option value="user">User</option>
-          <option value="organization">Organization</option>
-        </select>
-        <button type="submit">Login</button>
-      </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </div>
+    <>
+      <Header />
+      <Sidebar />
+      <div className="pico">
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+            required
+          />
+          <select name="accountType" onChange={handleChange}>
+            <option value="user">User</option>
+            <option value="organization">Organization</option>
+          </select>
+          <button type="submit">Login</button>
+        </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
+      <Footer />
+    </>
   );
 }
 

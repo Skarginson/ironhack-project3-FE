@@ -1,12 +1,5 @@
-import { useContext } from "react";
-import { OrganizationContext } from "../contexts/OrganizationContext";
-
 const FollowedOrganizations = ({ user }) => {
-  const { organizations } = useContext(OrganizationContext);
-
-  const followedOrganizations = user.organizations.map((org) => {
-    return organizations.find((o) => o._id === org.organization);
-  });
+  const followedOrganizations = user.organizations;
 
   return (
     <div>

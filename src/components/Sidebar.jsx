@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import styles from "../styles/Sidebar.module.css";
 
 function Sidebar() {
   return (
-    <div className="sidebar">
-      <Link to="/Link1">Link1</Link>
-      <Link to="/Link2">Link2</Link>
-    </div>
+    <nav className={styles.sidebar}>
+      <a href="#link1">Link 1</a>
+      <a href="#link2">Link 2</a>
+      <a href="#link3">Link 3</a>
+    </nav>
   );
 }
 

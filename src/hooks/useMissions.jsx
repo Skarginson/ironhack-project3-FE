@@ -32,7 +32,7 @@ const useMissions = (orgId) => {
   function refetchMissions() {
     setUpdatedAt(Date.now());
   }
-
+  console.log(missions, "useEffect Mission");
   return { missions, loading, error, refetchMissions };
 };
 

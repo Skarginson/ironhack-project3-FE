@@ -12,9 +12,9 @@ import Page404 from "./pages/Page404";
 import OrganizationEdit from "./components/OrganizationEdit";
 import OrganizationHomepage from "./pages/OrganizationHomepage";
 import MissionsSection from "./components/MissionsSection";
-import PostsSection from "./components/PostsSection";
 import { OrganizationContextProvider } from "./contexts/OrganizationContext";
 import UserHomepage from "./pages/UserHomepage";
+import MissionDetails from "./components/MissionDetails";
 
 function App() {
   return (
@@ -27,18 +27,15 @@ function App() {
         </Route>
 
         <Route path="/" element={<Homepage />} />
-        <Route path="/organizations/:orgId" element={<DetailsOrg />} />
+        {/* <Route path="/organizations/:orgId" element={<DetailsOrg />} /> TO REMOVE */}
         <Route
-          path="/organizations/:orgId/home"
-          element={
-            <OrganizationContextProvider>
-              <OrganizationHomepage />
-            </OrganizationContextProvider>
-          }
-        >
-          <Route path="missions" element={<MissionsSection />} />
-          <Route path="posts" element={<PostsSection />} />
-        </Route>
+          path="/organizations/:orgId"
+          element={<OrganizationHomepage />}
+        />
+        <Route
+          path="/organizations/:orgId/details/:missionId"
+          element={<MissionDetails />}
+        />
         <Route path="/users/home" element={<UserHomepage />} />
         <Route path="/users/:userId" element={<UserDetails />} />
         <Route path="/organizations/:orgId/edit" Component={OrganizationEdit} />

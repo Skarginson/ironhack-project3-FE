@@ -1,0 +1,11 @@
+@import url("../variables.css");
+
+.header {
+  background-color: var(--soft-mint);
+  text-align: center;
+  top: 0px;
+}
+
+img {
+  height: 10rem;
+}

@@ -1,7 +1,8 @@
 import logoPlaceHolder from "../assets/logo-placeholder.jpg";
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/OrganizationsDetails.module.css";
 
-function OrganizationDetails(organization) {
+function OrganizationDetails({ organization }) {
   const navigate = useNavigate();
 
   function handleEditClick() {
@@ -9,7 +10,7 @@ function OrganizationDetails(organization) {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>{organization.name}</h1>
       <p>
         <strong>Email:</strong> {organization.email}
@@ -28,7 +29,9 @@ function OrganizationDetails(organization) {
         src={organization.image || logoPlaceHolder}
         alt={`${organization.name} logo`}
       />
-      <button onClick={handleEditClick}>Edit</button>
+      <div>
+        <button onClick={handleEditClick}>Edit</button>
+      </div>
     </div>
   );
 }

@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
+import styles from "../styles/Header.module.css";
+import logoCharityWise from "../assets/logo-charitywise.png";
 
 function Header() {
   return (
-    <div className="header">
-      <Link to="/">blabla foutre un logo ici </Link>
-    </div>
+    <header className={styles.header}>
+      <Link to="/">
+        <img src={logoCharityWise} alt="logo CharityWise"></img>
+      </Link>
+    </header>
   );
 }
 
