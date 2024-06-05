@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import MissionForm from "./MissionForm";
 
 const MissionEdit = () => {
   const { missionId } = useParams();
@@ -53,59 +54,14 @@ const MissionEdit = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  // missionForm, reçoit misison, handleSubmit, handleChange
   return (
     <div>
       <h1>Edit Mission</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={mission.name}
-              onChange={handleChange}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Description:
-            <textarea
-              name="description"
-              value={mission.description}
-              onChange={handleChange}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Start Date:
-            <input
-              type="date"
-              name="startDate"
-              value={mission.startDate}
-              onChange={handleChange}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            End Date:
-            <input
-              type="date"
-              name="endDate"
-              value={mission.endDate}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-        <button type="submit">Save Changes</button>
-      </form>
+      <MissionForm
+        mission={mission}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };

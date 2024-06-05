@@ -31,7 +31,6 @@ function MissionDetails() {
       <p>
         <strong>Date de fin de mission :</strong> {mission.endDate}
       </p>
-      <p>{/* <strong>Organisation:</strong> {mission.organization.name} */}</p>
       <div>
         <button onClick={handleEdit}>Edit</button>
         <button

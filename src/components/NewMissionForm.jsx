@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import MissionForm from "./MissionForm";
 
 const NewMissionForm = ({ orgId, onMissionCreated }) => {
   const [missionDetails, setMissionDetails] = useState({
@@ -10,8 +11,6 @@ const NewMissionForm = ({ orgId, onMissionCreated }) => {
     endDate: "",
     organization: orgId,
   });
-
-  const { name, description, startDate, endDate } = missionDetails;
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -43,45 +42,14 @@ const NewMissionForm = ({ orgId, onMissionCreated }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <h2>Create New Mission</h2>
-      <label>
-        Name:
-        <input type="text" name="name" value={name} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Description:
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Mission Start Date:
-        <input
-          type="date"
-          name="startDate"
-          value={startDate}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Mission End Date:
-        <input
-          type="date"
-          name="endDate"
-          value={endDate}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <button type="submit">Create Mission</button>
-    </form>
+      <MissionForm
+        mission={missionDetails}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+    </>
   );
 };
 
