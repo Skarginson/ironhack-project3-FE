@@ -28,7 +28,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<LoginPage />} />
         </Route>
         <Route Component={IsPrivateLayout}>
           <Route
