@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useDonationSummary(user) {
+function useDonationSummary({ user }) {
   const [annualDonations, setAnnualDonations] = useState(0);
   const [taxReduction, setTaxReduction] = useState(0);
   const [optimalTaxableIncome, setOptimalTaxableIncome] = useState(0);

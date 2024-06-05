@@ -7,13 +7,18 @@ import useOrganization from "../hooks/useOrganization";
 
 function DetailsOrg() {
   const { orgId } = useParams();
-  const organization = useOrganization(orgId);
+  const { organization, loading, error } = useOrganization(orgId);
+  console.log(organization, "DetailsOrg");
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <>
       <Header />
       <Sidebar />
       <OrganizationDetails organization={organization} />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
