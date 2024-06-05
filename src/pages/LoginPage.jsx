@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/LoginPage.module.css";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ function LoginPage() {
   return (
     <>
       <div className="pico">
-        <h1>Login</h1>
+        <h1 className={styles.loginTitle}>Login</h1>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
