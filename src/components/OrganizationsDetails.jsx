@@ -5,19 +5,23 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useContext, useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import apiHandler from "../utils/apiHandler";
 
 function OrganizationDetails({ organization }) {
-  const { user } = useContext(AuthContext);
+  const { user, refetchUser } = useContext(AuthContext);
   const [amount, setAmount] = useState("");
   const [startDate, setStartDate] = useState("");
 
   const handleFollow = async () => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/users/follow`, {
-        userId: user._id,
-        organizationId: organization._id,
-      });
-
+      const response = await apiHandler.api.post(
+        `${API_BASE_URL}/users/follow`,
+        {
+          userId: user._id,
+          organizationId: organization._id,
+        }
+      );
+      refetchUser();
       if (response.status === 200) {
         alert("Organization followed");
       } else {
@@ -30,12 +34,15 @@ function OrganizationDetails({ organization }) {
 
   const handleDonate = async () => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/users/donate`, {
-        userId: user._id,
-        organizationId: organization._id,
-        amount,
-        startDate,
-      });
+      const response = await apiHandler.api.post(
+        `${API_BASE_URL}/users/donate`,
+        {
+          userId: user._id,
+          organizationId: organization._id,
+          amount,
+          startDate,
+        }
+      );
 
       if (response.status === 200) {
         alert("Donation made");
@@ -47,7 +54,6 @@ function OrganizationDetails({ organization }) {
     }
   };
 
-  console.log(user, "OrganizationDetails", organization);
   return (
     <div className={styles.container}>
       <h1>{organization.name}</h1>

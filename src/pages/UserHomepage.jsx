@@ -17,7 +17,6 @@ const Homepage = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  console.log(user);
   return (
     <>
       <Header />
@@ -25,7 +24,7 @@ const Homepage = () => {
       <div>
         <UserDetails user={user} />
         <OrganizationsList />
-        <DonationSummary />
+        <DonationSummary user={user} />
       </div>
       {/* <Footer /> */}
     </>

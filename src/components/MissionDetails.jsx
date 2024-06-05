@@ -7,7 +7,6 @@ function MissionDetails() {
   const { state } = useLocation();
   const { mission } = state;
   const { orgId } = useParams();
-  console.log(mission, "mission details");
 
   const navigate = useNavigate();
 

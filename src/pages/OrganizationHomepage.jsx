@@ -18,7 +18,6 @@ const OrganizationHomepage = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-  console.log(organization, "organizationHomepage");
 
   return (
     <div className={styles.container}>

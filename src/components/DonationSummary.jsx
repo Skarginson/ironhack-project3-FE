@@ -1,7 +1,8 @@
 import { useState } from "react";
 import useDonationSummary from "../hooks/useDonationSummary";
 
-function DonationSummary(user) {
+function DonationSummary({ user }) {
+  console.log(user, "DonationSummary");
   const {
     annualDonations,
     taxReduction,

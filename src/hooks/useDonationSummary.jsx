@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useDonationSummary({ user }) {
+function useDonationSummary(user) {
   const [annualDonations, setAnnualDonations] = useState(0);
   const [taxReduction, setTaxReduction] = useState(0);
   const [optimalTaxableIncome, setOptimalTaxableIncome] = useState(0);
@@ -15,7 +15,7 @@ function useDonationSummary({ user }) {
 
   function calculateDonations() {
     const monthlyDonations = user.organizations.reduce(function (total, org) {
-      return total + org.monthlyDonation.amount;
+      return total + (org.monthlyDonation?.amount || 0);
     }, 0);
 
     const annualDonations = monthlyDonations * 12;
@@ -25,11 +25,11 @@ function useDonationSummary({ user }) {
     setAnnualDonations(annualDonations);
     setTaxReduction(taxReduction);
     setOptimalTaxableIncome(optimalTaxableIncome);
-
+    console.log("user : ", user, "user.organizations", user.organizations);
     const donationsByOrg = user.organizations.map(function (org) {
       return {
         name: org.organization.name,
-        monthlyAmount: org.monthlyDonation.amount,
+        monthlyAmount: org.monthlyDonation?.amount || 0,
       };
     });
 

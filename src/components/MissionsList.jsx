@@ -3,7 +3,6 @@ import styles from "../styles/MissionList.module.css";
 import MissionCard from "./MissionCard";
 
 const MissionList = ({ missions }) => {
-  console.log(missions, "missionList");
   return (
     <div className={styles.container}>
       <h2>Current Missions</h2>

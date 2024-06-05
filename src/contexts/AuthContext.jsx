@@ -27,35 +27,34 @@ function AuthContextProvider({ children }) {
   //   localStorage.removeItem("authToken");
   // };
 
-  useEffect(() => {
-    console.log("useEffecting");
-    async function getUser() {
-      if (!authToken) {
-        if (user) {
-          setUser(null);
-        }
-
-        return;
+  async function getUser() {
+    if (!authToken) {
+      if (user) {
+        setUser(null);
       }
 
-      try {
-        setIsLoading(true);
-        const response = await apiHandler.getUser();
-        console.log(response.data, "response data");
-        setUser(response.data);
-      } catch (error) {
-        updateToken(null);
-      } finally {
-        setIsLoading(false);
-      }
+      return;
     }
 
+    try {
+      setIsLoading(true);
+      const response = await apiHandler.getUser();
+      setUser(response.data);
+    } catch (error) {
+      updateToken(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
     getUser();
   }, [authToken]);
 
-  console.log(user, "AuthContext");
   return (
-    <AuthContext.Provider value={{ user, updateToken, isLoading, updateUser }}>
+    <AuthContext.Provider
+      value={{ user, updateToken, isLoading, updateUser, refetchUser: getUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
