@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import About from "./pages/About";
-import Homepage from "./pages/Homepage";
 import UserDetails from "./components/UserDetails";
 import IsPublicLayout from "./components/IsPublicLayout";
 import IsPrivateLayout from "./components/IsPrivateLayout";
@@ -28,7 +27,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<LoginPage />} />
         </Route>
         <Route Component={IsPrivateLayout}>
           <Route

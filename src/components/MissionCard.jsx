@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 function MissionCard({ mission }) {
   return (
     <div className="homeCard">
