@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Link to="/users/home">users/home</Link>
-      <a href="#link2">Link 2</a>
+      <Link to="/signup">SignUp, par ici mamour</Link>
       <a href="#link3">Link 3</a>
     </nav>
   );
