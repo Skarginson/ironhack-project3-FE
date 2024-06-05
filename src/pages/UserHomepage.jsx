@@ -1,20 +1,28 @@
 import UserDetails from "../components/UserDetails";
-import FollowedOrganizations from "../components/FollowedOrganizations";
-import DonatedOrganizations from "../components/DonatedOrganizations";
-import OrganizationPosts from "../components/OrganizationPosts";
+import OrganizationsList from "../components/OrganizationsList";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
+import DonationSummary from "../components/DonationSummary";
+
 const Homepage = () => {
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { user, loading, error } = useContext(AuthContext);
+
+  if (!user) {
+    return <></>;
+  }
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
-    <div>
-      <UserDetails user={user} />
-      <FollowedOrganizations user={user} />
-      <DonatedOrganizations user={user} />
-      <OrganizationPosts user={user} />
-    </div>
+    <>
+      <div>
+        <UserDetails />
+        <OrganizationsList />
+        <DonationSummary user={user} />
+      </div>
+    </>
   );
 };
 

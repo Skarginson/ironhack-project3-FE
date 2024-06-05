@@ -1,0 +1,12 @@
+@import url("../variables.css");
+
+.navbar {
+  background-color: var(--emerald-green);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+a {
+  color: var(--sky-blue);
+}

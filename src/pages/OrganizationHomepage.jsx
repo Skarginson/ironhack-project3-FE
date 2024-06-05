@@ -1,37 +1,22 @@
-import { useNavigate, Outlet, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import OrganizationDetails from "../components/OrganizationsDetails";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
-import { useContext } from "react";
-import { OrganizationContext } from "../contexts/OrganizationContext";
+import MissionsSection from "../components/MissionsSection";
+import styles from "../styles/OrganizationHomepage.module.css";
+import useOrganization from "../hooks/useOrganization";
 
 const OrganizationHomepage = () => {
-  const { organization, loading, error } = useContext(OrganizationContext);
-  const navigate = useNavigate();
-
-  const handleEditClick = () => {
-    navigate(`/organizations/${organization._id}/edit`);
-  };
+  const { orgId } = useParams();
+  const { organization, loading, error } = useOrganization(orgId);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-  console.log(organization);
 
   return (
-    <div>
-      <Header />
-      <Sidebar />
-      <OrganizationDetails
-        organization={organization}
-        onEditClick={handleEditClick}
-      />
-      <nav>
-        <NavLink to="missions">Missions</NavLink>
-        <NavLink to="posts">Posts</NavLink>
-      </nav>
-      <Outlet />
-      <Footer />
+    <div className={styles.container}>
+      <main>
+        <OrganizationDetails organization={organization} />
+        <MissionsSection orgId={orgId} />
+      </main>
     </div>
   );
 };

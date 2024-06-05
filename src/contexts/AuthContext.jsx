@@ -8,43 +8,53 @@ function AuthContextProvider({ children }) {
   const [authToken, setAuthToken] = useState(localStorage.getItem("authToken"));
   const [isLoading, setIsLoading] = useState(false);
 
-  function updateToken(token) {
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
+  function updateToken(token, accountType) {
     if (token) {
       localStorage.setItem("authToken", token);
+      localStorage.setItem("accountType", accountType);
     } else {
-      localStorage.removeItem("authToken");
+      localStorage.clear();
     }
 
     setAuthToken(token);
   }
 
-  useEffect(() => {
-    async function getUser() {
-      if (!authToken) {
-        if (user) {
-          setUser(null);
-        }
+  // const logout = () => {
+  //   localStorage.removeItem("authToken");
+  // };
 
-        return;
+  async function getUser() {
+    if (!authToken) {
+      if (user) {
+        setUser(null);
       }
 
-      try {
-        setIsLoading(true);
-        const response = await apiHandler.getUser();
-        setUser(response.data);
-        console.log(response.data, "response data");
-      } catch (error) {
-        updateToken(null);
-      } finally {
-        setIsLoading(false);
-      }
+      return;
     }
 
+    try {
+      setIsLoading(true);
+      const response = await apiHandler.getUser();
+      setUser(response.data);
+    } catch (error) {
+      updateToken(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
     getUser();
   }, [authToken]);
 
   return (
-    <AuthContext.Provider value={{ user, updateToken, isLoading }}>
+    <AuthContext.Provider
+      value={{ user, updateToken, isLoading, updateUser, refetchUser: getUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

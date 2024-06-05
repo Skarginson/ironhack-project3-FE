@@ -8,7 +8,6 @@ const useMissions = (orgId) => {
   const [error, setError] = useState(null);
   const [updatedAt, setUpdatedAt] = useState(Date.now());
 
-  console.log("orgId", orgId);
   useEffect(() => {
     if (!orgId) {
       return;
@@ -32,7 +31,6 @@ const useMissions = (orgId) => {
   function refetchMissions() {
     setUpdatedAt(Date.now());
   }
-
   return { missions, loading, error, refetchMissions };
 };
 
