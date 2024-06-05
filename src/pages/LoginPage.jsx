@@ -2,9 +2,6 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../contexts/AuthContext";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
@@ -45,8 +42,6 @@ function LoginPage() {
   };
   return (
     <>
-      <Header />
-      <Sidebar />
       <div className="pico">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
@@ -72,7 +67,6 @@ function LoginPage() {
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
-      <Footer />
     </>
   );
 }

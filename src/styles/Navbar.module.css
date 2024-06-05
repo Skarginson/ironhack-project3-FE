@@ -1,6 +1,6 @@
 @import url("../variables.css");
 
-.sidebar {
+.navbar {
   background-color: var(--emerald-green);
   display: flex;
   justify-content: space-around;

@@ -2,9 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../consts";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
+
 import styles from "../styles/Footer.module.css";
 
 function SignupPage() {
@@ -53,8 +51,6 @@ function SignupPage() {
 
   return (
     <>
-      <Header />
-      <Sidebar />
       <div className="pico">
         <h1>Signup for {accountType}</h1>
         <label className={styles.switch}>
@@ -104,7 +100,6 @@ function SignupPage() {
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
-      <Footer />
     </>
   );
 }

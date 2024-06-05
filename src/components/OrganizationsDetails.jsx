@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "../styles/OrganizationsDetails.module.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext, useState } from "react";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import apiHandler from "../utils/apiHandler";
 

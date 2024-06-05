@@ -1,6 +1,3 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Sidebar from "../components/Sidebar";
 import OrganizationDetails from "../components/OrganizationsDetails";
 import { useParams } from "react-router-dom";
 import useOrganization from "../hooks/useOrganization";
@@ -14,10 +11,7 @@ function DetailsOrg() {
 
   return (
     <>
-      <Header />
-      <Sidebar />
       <OrganizationDetails organization={organization} />
-      {/* <Footer /> */}
     </>
   );
 }

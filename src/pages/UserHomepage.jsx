@@ -2,9 +2,7 @@ import UserDetails from "../components/UserDetails";
 import OrganizationsList from "../components/OrganizationsList";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
+
 import DonationSummary from "../components/DonationSummary";
 
 const Homepage = () => {
@@ -19,14 +17,11 @@ const Homepage = () => {
 
   return (
     <>
-      <Header />
-      <Sidebar />
       <div>
-        <UserDetails user={user} />
+        <UserDetails />
         <OrganizationsList />
         <DonationSummary user={user} />
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

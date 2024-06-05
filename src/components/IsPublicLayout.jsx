@@ -4,8 +4,17 @@ import { AuthContext } from "../contexts/AuthContext";
 
 function IsPublicLayout() {
   const { user } = useContext(AuthContext);
+  const accountType = localStorage.getItem("accountType");
   if (user) {
-    return <Navigate to="/" />;
+    return (
+      <Navigate
+        to={
+          accountType === "organization"
+            ? `/organizations/${user._id}`
+            : `/users/home`
+        }
+      />
+    );
   }
 
   return (

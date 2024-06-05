@@ -53,6 +53,7 @@ const MissionEdit = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  // missionForm, reçoit misison, handleSubmit, handleChange
   return (
     <div>
       <h1>Edit Mission</h1>
