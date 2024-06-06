@@ -1,7 +1,8 @@
 @import url("../variables.css");
 
 .container {
-  background-color: #d3d3d3;
+  width: 100%;
+  background-color: var(--soft-mint);
   padding: 20px;
   text-align: center;
   margin: 20px 0;
