@@ -20,7 +20,7 @@ Charitywise a été conçue pour faciliter le suivi de dons aux associations car
 - Ajout de tags pour organisations et missions permettant aux utilisateurs une recherche au plus près de leur intérêt.
 
 
-### [Lien vers le site](https://skarginson.github.io/project1---Woof-It-Home-/)
+### [Lien vers le site](https://charitywise.netlify.app/)
 
 
 ### Remerciements
