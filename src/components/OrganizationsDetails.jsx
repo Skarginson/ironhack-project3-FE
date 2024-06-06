@@ -11,25 +11,25 @@ function OrganizationDetails({ organization }) {
   const [amount, setAmount] = useState("");
   const [startDate, setStartDate] = useState("");
 
-  const handleFollow = async () => {
-    try {
-      const response = await apiHandler.api.post(
-        `${API_BASE_URL}/users/follow`,
-        {
-          userId: user._id,
-          organizationId: organization._id,
-        }
-      );
-      refetchUser();
-      if (response.status === 200) {
-        alert("Organization followed");
-      } else {
-        alert("Failed to follow organization");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const handleFollow = async () => {
+  //   try {
+  //     const response = await apiHandler.api.post(
+  //       `${API_BASE_URL}/users/follow`,
+  //       {
+  //         userId: user._id,
+  //         organizationId: organization._id,
+  //       }
+  //     );
+  //     refetchUser();
+  //     if (response.status === 200) {
+  //       alert("Organization followed");
+  //     } else {
+  //       alert("Failed to follow organization");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
   const handleDonate = async () => {
     try {
@@ -77,9 +77,9 @@ function OrganizationDetails({ organization }) {
         {user?.identification && user._id === organization._id && (
           <Link to={`/organizations/${organization._id}/edit`}>Edit</Link>
         )}
-      </div>
+        {/* </div>
       <button onClick={handleFollow}>Follow</button>
-      <div>
+      <div> */}
         <h2>Donate</h2>
         <input
           type="number"
