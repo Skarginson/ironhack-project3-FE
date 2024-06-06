@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "../styles/MissionList.module.css";
+import styles from "../styles/MissionsList.module.css";
 import MissionCard from "./MissionCard";
 
 const MissionList = ({ missions }) => {

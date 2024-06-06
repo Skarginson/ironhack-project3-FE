@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import apiHandler from "../utils/apiHandler";
 
 const useMissions = (orgId) => {
   const [missions, setMissions] = useState([]);
@@ -15,7 +15,7 @@ const useMissions = (orgId) => {
 
     const fetchMissions = async () => {
       try {
-        const response = await axios.get(
+        const response = await apiHandler.api.get(
           `${API_BASE_URL}/organizations/${orgId}/missions`
         );
         setMissions(response.data);

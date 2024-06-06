@@ -1,7 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import MissionForm from "./MissionForm";
+import apiHandler from "../utils/apiHandler";
 
 const NewMissionForm = ({ orgId, onMissionCreated }) => {
   const [missionDetails, setMissionDetails] = useState({
@@ -23,7 +23,7 @@ const NewMissionForm = ({ orgId, onMissionCreated }) => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL}/missions`, {
+      const response = await apiHandler.api.post(`${API_BASE_URL}/missions`, {
         ...missionDetails,
         organization: orgId,
       });

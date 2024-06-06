@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { Link } from "react-router-dom";
+import apiHandler from "../utils/apiHandler";
 
 const OrganizationsList = () => {
   const [organizations, setOrganizations] = useState([]);
@@ -11,7 +11,9 @@ const OrganizationsList = () => {
   useEffect(() => {
     const fetchOrganizations = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/organizations/`);
+        const response = await apiHandler.api.get(
+          `${API_BASE_URL}/organizations/`
+        );
         setOrganizations(response.data);
         setLoading(false);
       } catch (err) {

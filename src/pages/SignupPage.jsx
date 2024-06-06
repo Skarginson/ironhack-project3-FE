@@ -29,7 +29,7 @@ function SignupPage() {
         : `${API_BASE_URL}/users/signup`;
 
     try {
-      const response = await axios.post(url, formData);
+      const response = await apiHandler.api.post(url, formData);
       const id = response.data._id;
       if (formData.accountType === "organization") {
         navigate(`/organizations/${id}`);

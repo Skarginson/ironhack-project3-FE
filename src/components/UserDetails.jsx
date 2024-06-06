@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
 import { API_BASE_URL } from "../consts";
+import apiHandler from "../utils/apiHandler";
 
 const UserDetails = () => {
   const { user, updateUser } = useContext(AuthContext);
@@ -19,7 +19,10 @@ const UserDetails = () => {
         updatedUser.password = password;
       }
 
-      await axios.put(`${API_BASE_URL}/users/${user._id}`, updatedUser);
+      await apiHandler.api.put(
+        `${API_BASE_URL}/users/${user._id}`,
+        updatedUser
+      );
 
       updateUser(updatedUser);
 

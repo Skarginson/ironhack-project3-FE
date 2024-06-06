@@ -1,8 +1,14 @@
 @import url("../variables.css");
 
 .container {
-  background-color: #d3d3d3;
-  padding: 20px;
   text-align: center;
-  margin: 20px 0;
+}
+
+input,
+textarea {
+  margin: 5px;
+}
+
+form {
+  text-align: center;
 }
