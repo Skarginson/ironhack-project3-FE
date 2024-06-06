@@ -37,16 +37,16 @@ function App() {
             element={<OrganizationHomepage />}
           />
           <Route
+            path="/organizations/:orgId/edit"
+            Component={OrganizationEdit}
+          />
+          <Route
             path="/organizations/:orgId/details/:missionId"
             element={<MissionDetails />}
           />
           <Route path="/missions/:missionId/edit" Component={MissionEdit} />
           <Route path="/users/home" element={<UserHomepage />} />
           <Route path="/users/:userId" element={<UserDetails />} />
-          <Route
-            path="/organizations/:orgId/edit"
-            Component={OrganizationEdit}
-          />
         </Route>
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<SignupPage />} />
