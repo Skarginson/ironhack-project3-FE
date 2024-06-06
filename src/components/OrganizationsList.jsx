@@ -30,7 +30,7 @@ const OrganizationsList = () => {
 
   return (
     <div>
-      <h1>Organizations</h1>
+      <h2>Organizations</h2>
       <ul>
         {organizations.map((org) => (
           <Link to={`/organizations/${org._id}/details`} key={org._id}>
