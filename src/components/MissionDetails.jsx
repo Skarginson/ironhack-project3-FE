@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "../styles/MissionDetails.module.css";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import apiHandler from "../utils/apiHandler";
 
 function MissionDetails() {
   const { state } = useLocation();
@@ -15,7 +15,7 @@ function MissionDetails() {
   }
 
   const handleDelete = async () => {
-    await axios.delete(`${API_BASE_URL}/missions/${mission._id}`);
+    await apiHandler.api.delete(`${API_BASE_URL}/missions/${mission._id}`);
     navigate(`/organizations/${orgId}`);
   };
 

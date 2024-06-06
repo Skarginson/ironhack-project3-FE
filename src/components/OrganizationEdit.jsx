@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import styles from "../styles/OrganizationEdit.module.css";
+import apiHandler from "../utils/apiHandler";
 
 const OrganizationEdit = () => {
   const { orgId } = useParams();
@@ -20,7 +21,7 @@ const OrganizationEdit = () => {
   useEffect(() => {
     const fetchOrganization = async () => {
       try {
-        const response = await axios.get(
+        const response = await apiHandler.api.get(
           `${API_BASE_URL}/organizations/${orgId}`
         );
         setOrganization(response.data);
@@ -45,7 +46,10 @@ const OrganizationEdit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${API_BASE_URL}/organizations/${orgId}`, organization);
+      await apiHandler.api.put(
+        `${API_BASE_URL}/organizations/${orgId}`,
+        organization
+      );
       navigate(`/organizations/${orgId}`);
     } catch (err) {
       setError(err.message);
@@ -56,12 +60,12 @@ const OrganizationEdit = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Edit Organization</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            Name:
+            Name: <br />
             <input
               type="text"
               name="name"
@@ -74,6 +78,7 @@ const OrganizationEdit = () => {
         <div>
           <label>
             Email:
+            <br />
             <input
               type="email"
               name="email"
@@ -86,10 +91,13 @@ const OrganizationEdit = () => {
         <div>
           <label>
             Description:
+            <br />
             <textarea
               name="description"
               value={organization.description}
               onChange={handleChange}
+              rows="5"
+              cols="35"
               required
             />
           </label>
@@ -97,6 +105,7 @@ const OrganizationEdit = () => {
         <div>
           <label>
             Identification:
+            <br />
             <input
               type="text"
               name="identification"
@@ -109,6 +118,7 @@ const OrganizationEdit = () => {
         <div>
           <label>
             Donation Link:
+            <br />
             <input
               type="url"
               name="donationLink"
@@ -120,6 +130,7 @@ const OrganizationEdit = () => {
         <div>
           <label>
             Image URL:
+            <br />
             <input
               type="url"
               name="image"

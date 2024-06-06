@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import MissionForm from "./MissionForm";
+import apiHandler from "../utils/apiHandler";
 
 const MissionEdit = () => {
   const { missionId } = useParams();
@@ -19,7 +19,7 @@ const MissionEdit = () => {
   useEffect(() => {
     const fetchMission = async () => {
       try {
-        const response = await axios.get(
+        const response = await apiHandler.api.get(
           `${API_BASE_URL}/missions/${missionId}`
         );
         setMission(response.data);
@@ -44,7 +44,10 @@ const MissionEdit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${API_BASE_URL}/missions/${missionId}`, mission);
+      await apiHandler.api.put(
+        `${API_BASE_URL}/missions/${missionId}`,
+        mission
+      );
       navigate(`/organizations/${mission.organization._id}`);
     } catch (err) {
       setError(err.message);

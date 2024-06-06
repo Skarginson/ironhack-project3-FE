@@ -1,0 +1,12 @@
+.container {
+  text-align: center;
+}
+
+input,
+textarea {
+  margin: 5px;
+}
+
+form {
+  text-align: center;
+}

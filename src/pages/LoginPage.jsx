@@ -25,7 +25,7 @@ function LoginPage() {
     setError("");
 
     try {
-      const response = await axios.post(
+      const response = await apiHandler.api.post(
         `${API_BASE_URL}/login?accountType=${formData.accountType}`,
         formData
       );

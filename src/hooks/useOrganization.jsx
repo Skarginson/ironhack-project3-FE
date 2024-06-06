@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
+import apiHandler from "../utils/apiHandler";
 
 const useOrganization = (orgId) => {
   const [organization, setOrganization] = useState(null);
@@ -10,7 +10,7 @@ const useOrganization = (orgId) => {
   useEffect(() => {
     const fetchOrganization = async () => {
       try {
-        const response = await axios.get(
+        const response = await apiHandler.api.get(
           `${API_BASE_URL}/organizations/${orgId}`
         );
         setOrganization(response.data);
