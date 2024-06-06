@@ -24,8 +24,6 @@ function App() {
       <Navbar />
       <Routes>
         <Route Component={IsPublicLayout}>
-          <Route path="/about" element={<About />} />
-          <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<LoginPage />} />
         </Route>
@@ -50,6 +48,8 @@ function App() {
             Component={OrganizationEdit}
           />
         </Route>
+        <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
