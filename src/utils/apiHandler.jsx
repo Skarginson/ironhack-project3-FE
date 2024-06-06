@@ -24,22 +24,6 @@ class ApiHandler {
     );
   }
 
-  //   getAllJournals() {
-  //     return this.api.get("/journals");
-  //   }
-
-  //   createJournal(journalData) {
-  //     return this.api.post("/journals", journalData);
-  //   }
-
-  //   login(creadentials) {
-  //     return this.api.post("/users/login", creadentials);
-  //   }
-
-  //   signup(data) {
-  //     return this.api.post("/users/signup", data);
-  //   }
-
   getUser() {
     return this.api.get("/users/me");
   }
