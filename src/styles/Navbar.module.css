@@ -4,9 +4,18 @@
   background-color: var(--emerald-green);
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 10px;
 }
 
 a {
   color: var(--sky-blue);
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
