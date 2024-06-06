@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
-import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/LoginPage.module.css";
+import apiHandler from "../utils/apiHandler";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
