@@ -23,10 +23,6 @@ function AuthContextProvider({ children }) {
     setAuthToken(token);
   }
 
-  // const logout = () => {
-  //   localStorage.removeItem("authToken");
-  // };
-
   async function getUser() {
     if (!authToken) {
       if (user) {
