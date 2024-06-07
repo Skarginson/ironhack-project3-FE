@@ -25,8 +25,8 @@ function SignupPage() {
 
     const url =
       formData.accountType === "organization"
-        ? `${API_BASE_URL}/organizations/signup`
-        : `${API_BASE_URL}/users/signup`;
+        ? `${API_BASE_URL}organizations/signup`
+        : `${API_BASE_URL}users/signup`;
 
     try {
       const response = await apiHandler.api.post(url, formData);
