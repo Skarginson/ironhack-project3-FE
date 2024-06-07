@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../consts";
-import { apiHandler } from "../utils/apiHandler";
+import apiHandler from "../utils/apiHandler";
 
 function SignupPage() {
   const [formData, setFormData] = useState({
