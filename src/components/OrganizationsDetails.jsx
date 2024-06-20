@@ -77,23 +77,27 @@ function OrganizationDetails({ organization }) {
         {user?.identification && user._id === organization._id && (
           <Link to={`/organizations/${organization._id}/edit`}>Edit</Link>
         )}
-        {/* </div>
-      <button onClick={handleFollow}>Follow</button>
-      <div> */}
-        <h2>Donate</h2>
-        <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <input
-          type="date"
-          placeholder="Start Date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-        <button onClick={handleDonate}>Donate</button>
+      </div>
+      {/*<button onClick={handleFollow}>Follow</button>*/}
+      <div>
+        {user?.accountType === "user" && (
+          <div>
+            <h2>Donate</h2>
+            <input
+              type="number"
+              placeholder="Amount"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            />
+            <input
+              type="date"
+              placeholder="Start Date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+            <button onClick={handleDonate}>Donate</button>
+          </div>
+        )}
       </div>
     </div>
   );
